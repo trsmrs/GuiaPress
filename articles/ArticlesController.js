@@ -8,8 +8,6 @@ router.get('/articles', (req, res) => {
 })
 
 
-router.get('/admin/categories/new',(req, res) => {
-  res.send('Rota para Criar novo Artigo')
-})
+
 
 module.exports = router

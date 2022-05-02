@@ -31,7 +31,7 @@ connection.authenticate().then(() => {
 })
 
 
-app.use('/prefixo', categoriesController)
+app.use('/', categoriesController)
 app.use('/', articlesController)
 // app.get('/', (req, res)=>{
 //     res.render('index')
