@@ -31,8 +31,11 @@
                                 <th><%=category.title%></th>
                                 <th><%=category.slug%></th>
                                 <th>
-                                    <button class="btn btn-warning">Editar</button>
-                                    <button class="btn btn-danger">Deletar</button>
+                                    <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-warning">Editar</a>
+                                    <form method="POST" action="/categories/delete" style="display: inline" onsubmit="confirmDelete(event, this)">
+                                        <input type="hidden" name="id" value="<%= category.id%>">
+                                        <button class="btn btn-danger">Deletar</button>
+                                    </form>
                                 </th>
                             </tr>    
                             <% }) %>
@@ -42,6 +45,15 @@
         </div>
 
 
+        <script>
+            function confirmDelete(event, form){
+                event.preventDefault()
+               const desicion = confirm('Deseja realmente excluir esse Registro?')
+                if(desicion){
+                    form.submit()
+                }    
+            }
+        </script>
         <%- include('../../partials/foot.ejs') %>
 </body>
 
