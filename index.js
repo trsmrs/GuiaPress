@@ -30,7 +30,7 @@ connection.authenticate().then(() => {
     console.log(error)
 })
 
-
+// app.get('/')
 app.use('/', categoriesController)
 app.use('/', articlesController)
 
