@@ -35,16 +35,29 @@ app.use('/', categoriesController)
 app.use('/', articlesController)
 
 
+app.get('/', (re, res)=>{
+    Article.findAll({order:[['id', 'DESC']]}).then(articles =>{
+        res.render('index', {articles: articles})
+    })
+})
 
 
-
-
-
-
-
-
-
-
+app.get('/:slug', (req, res)=>{
+    let slug = req.params.slug
+    Article.findOne({
+        where: {
+            slug: slug
+        }
+    }).then(article =>{
+        if(article != undefined){
+            res.render('article', {article: article})
+        }else{
+            res.redirect('/')
+        }
+    }).catch(err =>{
+        res.redirect('/')
+    })
+})
 
 
 // conexão com o Servidor
