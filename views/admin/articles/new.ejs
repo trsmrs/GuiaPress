@@ -20,7 +20,7 @@
                         <input class="form-control" type="text" name="title" placeholder="Defina o título do Artigo">
                         <br>
                         <textarea class="form-control" placeholder="Escreva o artigo aqui!" name="body" id="article"></textarea>
-                        <labe>Categoria</labe>
+                        <label>Categoria</label>
                         <select name="category" class="form-control">
                             <% categories.forEach((category) =>{ %>
                                 <option value="<%= category.id%>"><%= category.title%></option>
@@ -36,7 +36,10 @@
         <script>
             tinymce.init({
                 language: 'pt_BR',
-                selector: "#article"
+                selector: "#article",
+                plugins:[
+                    'advlist autolink link image lists print preview hr searchplace'
+                ]
             })
         </script>
         <%- include('../../partials/foot.ejs') %>
